@@ -227,7 +227,7 @@ pub fn expand_macro(tokens: TokenStream) -> syn::Result<TokenStream> {
             });
             
             let websocket_message_tokens = optional_methods.has_websocket_message.then(|| quote! {
-                async fn websocket_message(&mut self, ws: ::worker::WebSocket, message: String) -> ::worker::Result<()> {
+                async fn websocket_message(&mut self, ws: ::worker::WebSocket, message: ::worker::WebSocketIncomingMessage) -> ::worker::Result<()> {
                     self._websocket_message_raw(ws, message).await
                 }
             });
@@ -250,7 +250,6 @@ pub fn expand_macro(tokens: TokenStream) -> syn::Result<TokenStream> {
                     #(#tokenized)*
                 }
 
-                #pound[async_trait::async_trait(?Send)]
                 impl ::worker::durable::DurableObject for #struct_name {
                     fn new(state: ::worker::durable::State, env: ::worker::Env) -> Self {
                         Self::_new(state._inner(), env)
