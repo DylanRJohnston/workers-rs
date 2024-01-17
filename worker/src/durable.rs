@@ -195,7 +195,7 @@ impl State {
         self.inner
     }
 
-    pub fn accept_web_socket(&self, ws: WebSocket) {
+    pub fn accept_websocket(&self, ws: WebSocket) {
         self.inner.accept_websocket(ws.as_ref().clone())
     }
 
