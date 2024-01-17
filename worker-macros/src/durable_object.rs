@@ -136,7 +136,7 @@ pub fn expand_macro(tokens: TokenStream) -> syn::Result<TokenStream> {
 
                         Ok(quote! {
                             #pound[wasm_bindgen::prelude::wasm_bindgen(js_name = webSocketMessage)]
-                            pub fn _websocket_message(&mut self, ws: worker_sys::web_sys::WebSocket, message: JsValue) -> js_sys::Promise {
+                            pub fn _websocket_message(&mut self, ws: worker_sys::web_sys::WebSocket, message: wasm_bindgen::JsValue) -> js_sys::Promise {
                                 let ws_message = if let Some(string_message) = message.as_string() {
                                     worker::WebSocketIncomingMessage::String(string_message)
                                 } else {
