@@ -195,7 +195,7 @@ impl State {
         self.inner
     }
 
-    pub fn accept_web_socket(&self, ws: &WebSocket) {
+    pub fn accept_websocket(&self, ws: &WebSocket) {
         self.inner.accept_websocket(ws.as_ref())
     }
 
@@ -780,7 +780,7 @@ pub trait DurableObject {
     }
 
     #[allow(unused_variables, clippy::diverging_sub_expression)]
-    async fn websocket_message(
+    fn websocket_message(
         &mut self,
         ws: WebSocket,
         message: WebSocketIncomingMessage,
@@ -789,7 +789,7 @@ pub trait DurableObject {
     }
 
     #[allow(unused_variables, clippy::diverging_sub_expression)]
-    async fn websocket_close(
+    fn websocket_close(
         &mut self,
         ws: WebSocket,
         code: usize,

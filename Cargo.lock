@@ -2436,6 +2436,7 @@ dependencies = [
  "async-trait",
  "proc-macro2",
  "quote",
+ "syn 2.0.38",
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "wasm-bindgen-macro-support",
